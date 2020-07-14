@@ -22,8 +22,9 @@ Route::get('home', function () {
 
 Route::get('portafolio', 'PortafolioController')->name('portafolio');//Declaracion de rutas haciendo uso de controladores
 //Declaracion de rutas haciendo uso de controladores y resource
-Route::get('portafolioIndex', 'PortafolioResourceController@index')->name('portafolioResource');
+Route::get('/portafolioIndex', 'ProjectsResourceController@index')->name('projectsResource.index');
+Route::get('/portafolioIndex/{id}', 'ProjectsResourceController@show')->name('projects.show');
 //crear ruta para todos nuestros metodos de nuestro controlador Resource
-Route::resource('projects','PortafolioResourceController');
+Route::resource('projects','ProjectsResourceController');
 Route::get('contact', 'ContactController@index')->name('contact');
 Route::post('contact', 'ContactController@store')->name('contactStore');

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Project;
 use Illuminate\Http\Request;
 
-class PortafolioResourceController extends Controller
+class ProjectsResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,9 @@ class PortafolioResourceController extends Controller
      */
     public function index()
     {
-      $data = [
-        ['title'=>'proyecto 1'],
-        ['title'=>'proyecto 2'],
-        ['title'=>'proyecto 3'],
-        ['title'=>'proyecto 4']
-      ];
-      return view('portafolio', compact('data'));
+      $projects = Project::orderBy('created_at', 'DESC')->get();
+      $projects2 = Project::orderBy('created_at', 'DESC')->paginate(1);
+      return view('projects.index', compact('projects','projects2'));
     }
 
     /**
@@ -52,7 +48,9 @@ class PortafolioResourceController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('projects.show', [
+          'findProjectId' => Project::findOrFail($id)
+        ]);
     }
 
     /**
