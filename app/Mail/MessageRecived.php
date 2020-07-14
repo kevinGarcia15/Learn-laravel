@@ -12,14 +12,15 @@ class MessageRecived extends Mailable
     use Queueable, SerializesModels;
 
     public $subject = 'Mensaje recibido';
+    public $msg;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($msg)
     {
-        //
+        $this->msg = $msg;
     }
 
     /**

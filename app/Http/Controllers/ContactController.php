@@ -51,7 +51,7 @@ class ContactController extends Controller
       $name = request('nombre');
 
       /*Enviar email*/
-      Mail::to('gkevin964@gmail.com')->send(new MessageRecived($message));
+      Mail::to('gkevin964@gmail.com')->queue(new MessageRecived($message));
       return 'mensaje enviado';
     }
 
