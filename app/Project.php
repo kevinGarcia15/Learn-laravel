@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
   //para ingresar datos masivamente
-  protected $fillable = ['title','description'];
+  protected $guarded = [];//deshabilitamos el filable cuando es un array vacio
 
   public function getRouterKeyName(){
     return 'url';

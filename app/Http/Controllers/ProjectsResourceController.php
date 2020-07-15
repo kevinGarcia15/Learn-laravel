@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectsResourceController extends Controller
 {
@@ -35,12 +36,9 @@ class ProjectsResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(SaveProjectRequest $request)
     {
-       Project::create([
-        'title'=> request('title'),
-        'description'=> request('description'),
-      ]);
+       Project::create($request->validated());
       return redirect()->route('projects.index');//nombre de la ruta
     }
 
@@ -65,7 +63,9 @@ class ProjectsResourceController extends Controller
      */
     public function edit($id)
     {
-        //
+      return view('projects.edit', [
+        'project' => Project::findOrFail($id)
+      ]);
     }
 
     /**
@@ -75,9 +75,11 @@ class ProjectsResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Project $project, SaveProjectRequest $request)
     {
-        //
+      $project->update($request->validated());
+
+      return redirect()->route('projects.show', $project);
     }
 
     /**
