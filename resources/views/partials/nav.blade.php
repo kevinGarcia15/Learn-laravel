@@ -1,16 +1,13 @@
 <nav>
   <ul>
     <li>
-      <a class="{{setActive('home')}}" href="/app2/public/home">Home</a>
+      <a class="{{setActive('home')}}" href="{{route('home')}}">Home</a>
     </li>
     <li>
-      <a class="{{setActive('portafolio')}}" href="/app2/public/portafolio">Portafolio</a>
+      <a class="{{setActive('projectsResource.*')}}" href="{{route('projectsResource.index')}}">Portafolio Resource</a>
     </li>
     <li>
-      <a class="{{setActive('portafolioResource')}}" href="/app2/public/portafolioIndex">Portafolio Resource</a>
-    </li>
-    <li>
-      <a class="{{setActive('contact')}}" href="/app2/public/contact">Contactos</a>
+      <a class="{{setActive('contact')}}" href="{{route('contact')}}">Contactos</a>
     </li>
   </ul>
 </nav>

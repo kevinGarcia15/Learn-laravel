@@ -26,7 +26,7 @@ class ProjectsResourceController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -35,9 +35,13 @@ class ProjectsResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+       Project::create([
+        'title'=> request('title'),
+        'description'=> request('description'),
+      ]);
+      return redirect()->route('projects.index');//nombre de la ruta
     }
 
     /**
