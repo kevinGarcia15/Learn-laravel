@@ -25,7 +25,7 @@ Route::get('contact', 'ContactController@index')->name('contact');
 Route::post('contact', 'ContactController@store')->name('contactStore');
 
 //Declaracion de rutas haciendo uso de controladores y resource
-Route::resource('projectsResource','ProjectsResourceController');
+Route::resource('projectsResource','ProjectsResourceController')->middleware('auth');
 /*
 Route::get('/portafolioIndex', 'ProjectsResourceController@index')->name('projectsResource.index');
 Route::get('/portafolioIndex/crear', 'ProjectsResourceController@create')->name('projectsResource.create');//va antes de show porque si no genera un error 404
@@ -36,6 +36,4 @@ Route::get('/portafolioIndex/{id}', 'ProjectsResourceController@show')->name('pr
 Route::delete('/portafolioIndex/{project}', 'ProjectsResourceController@destroy')->name('projectsResource.destroy');
 */
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['register' => false]);
