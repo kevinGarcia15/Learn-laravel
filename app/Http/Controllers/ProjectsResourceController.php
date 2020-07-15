@@ -27,7 +27,9 @@ class ProjectsResourceController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create', [
+          'project' => new Project
+        ]);
     }
 
     /**
@@ -39,7 +41,7 @@ class ProjectsResourceController extends Controller
     public function store(SaveProjectRequest $request)
     {
        Project::create($request->validated());
-      return redirect()->route('projects.index');//nombre de la ruta
+      return redirect()->route('projectsResource.index');//nombre de la ruta
     }
 
     /**
@@ -75,11 +77,11 @@ class ProjectsResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Project $project, SaveProjectRequest $request)
+    public function update(Project $projectsResource, SaveProjectRequest $request)
     {
-      $project->update($request->validated());
+      $projectsResource->update($request->validated());
 
-      return redirect()->route('projects.show', $project);
+      return redirect()->route('projectsResource.show', $projectsResource);
     }
 
     /**
@@ -88,8 +90,10 @@ class ProjectsResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $projectsResource)
     {
-        //
+        $projectsResource->delete();
+        return redirect()->route('projectsResource.index');//nombre de la ruta
+
     }
 }

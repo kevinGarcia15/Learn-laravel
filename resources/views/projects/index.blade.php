@@ -5,7 +5,7 @@
   <a href="{{route('projectsResource.create')}}">crear proyecto</a>
   <ul>
     @forelse($projects as $portafolio)
-      <li><a href="{{route('projects.show', $portafolio)}}">{{$portafolio->title}}</a></li>
+      <li><a href="{{route('projectsResource.show', $portafolio)}}">{{$portafolio->title}}</a></li>
     @empty
       <li>No hay datos por mostrar</li>
     @endforelse

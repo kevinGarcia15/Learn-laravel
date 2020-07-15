@@ -52,7 +52,7 @@ class ContactController extends Controller
 
       /*Enviar email*/
       Mail::to('gkevin964@gmail.com')->queue(new MessageRecived($message));
-      return 'mensaje enviado';
+      return back();
     }
 
     /**
