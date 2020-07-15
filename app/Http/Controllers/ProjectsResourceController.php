@@ -41,7 +41,8 @@ class ProjectsResourceController extends Controller
     public function store(SaveProjectRequest $request)
     {
        Project::create($request->validated());
-      return redirect()->route('projectsResource.index');//nombre de la ruta
+       //nombre de la ruta
+      return redirect()->route('projectsResource.index')->with('status','El proyecto fue creado exitosamente');
     }
 
     /**
@@ -81,7 +82,7 @@ class ProjectsResourceController extends Controller
     {
       $projectsResource->update($request->validated());
 
-      return redirect()->route('projectsResource.show', $projectsResource);
+      return redirect()->route('projectsResource.show', $projectsResource)->with('status','El proyecto fue actualizado exitosamente');
     }
 
     /**
@@ -93,7 +94,7 @@ class ProjectsResourceController extends Controller
     public function destroy(Project $projectsResource)
     {
         $projectsResource->delete();
-        return redirect()->route('projectsResource.index');//nombre de la ruta
+        return redirect()->route('projectsResource.index')->with('status','El proyecto fue Eliminado exitosamente');//nombre de la ruta
 
     }
 }

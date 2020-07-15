@@ -12,6 +12,8 @@
   </head>
   <body>
     @include('partials/nav')<!--Incluimos el archivo nav-->
+    @include('partials/_session-status')
+    
     @yield('content')
   </body>
 </html>

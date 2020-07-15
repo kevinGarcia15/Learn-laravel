@@ -35,3 +35,7 @@ Route::post('/portafolioIndex', 'ProjectsResourceController@store')->name('proje
 Route::get('/portafolioIndex/{id}', 'ProjectsResourceController@show')->name('projectsResource.show');
 Route::delete('/portafolioIndex/{project}', 'ProjectsResourceController@destroy')->name('projectsResource.destroy');
 */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
