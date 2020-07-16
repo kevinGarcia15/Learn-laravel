@@ -1,12 +1,19 @@
 @extends('layout')
-@section('title', 'crear proyecto')
+@section('title', 'Crear proyecto')
 @section('content')
-  <h1>Crear proyecto</h1>
-  <form
-    class=""
-    action="{{route('projectsResource.store')}}"
-    method="post">
+  <div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+          <form
+            class="bg-white py-3 px-4 shadow rounded"
+            action="{{route('projectsResource.store')}}"
+            method="post">
+            <h1>Crear proyecto</h1>
+            <hr>
 
-    @include('projects/_form', ['btnText' => 'Guardar'])
-  </form>
+            @include('projects/_form', ['btnText' => 'Guardar'])
+        </form>
+        </div>
+      </div>
+  </div>
 @endsection

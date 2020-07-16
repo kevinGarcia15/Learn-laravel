@@ -1,22 +1,29 @@
 @extends('layout')
-@section('title', 'home')
+@section('title', 'Proyectos')
 @section('content')
-  <h1>Proyectos</h1>
-  <a href="{{route('projectsResource.create')}}">crear proyecto</a>
-  <ul>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Proyectos</h1>
+    <a href="{{route('projectsResource.create')}}">crear proyecto</a>
+  </div>
+  <ul class="list-group">
     @forelse($projects as $portafolio)
-      <li><a href="{{route('projectsResource.show', $portafolio)}}">{{$portafolio->title}}</a></li>
+    <li class="list-group-item border-0 mb-3 shadow-sm">
+      <a href="{{route('projectsResource.show', $portafolio)}}" class="d-flex justify-content-between">
+        <span>
+          {{$portafolio->title}}
+        </span>
+        <span>
+          {{$portafolio->created_at->format('d/m/y')}}
+        </span>
+      </a>
+    </li>
     @empty
-      <li>No hay datos por mostrar</li>
+    <li class="list-group-item border-0 mb-3 shadow-sm">
+      No hay datos por mostrar
+    </li>
     @endforelse
+    {{$projects->links()}}
   </ul>
-
-  <ul>
-    @forelse($projects2 as $portafolio)
-    <li>{{$portafolio->title}}</li>
-    @empty
-    <li>No hay datos por mostrar</li>
-    @endforelse
-    {{$projects2->links()}}
-  </ul>
+</div>
 @endsection

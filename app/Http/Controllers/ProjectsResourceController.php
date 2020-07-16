@@ -15,9 +15,9 @@ class ProjectsResourceController extends Controller
      */
     public function index()
     {
-      $projects = Project::orderBy('created_at', 'DESC')->get();
-      $projects2 = Project::orderBy('created_at', 'DESC')->paginate(1);
-      return view('projects.index', compact('projects','projects2'));
+      $projects = Project::orderBy('created_at', 'DESC')->paginate(5);
+  //    $projects2 = Project::orderBy('created_at', 'DESC')->paginate(1);
+      return view('projects.index', compact('projects'));
     }
 
     /**
